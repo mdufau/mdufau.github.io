@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mélanie Dufau — L&D & Sales Excellence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #F5F0E8;
+      --warm-white: #FDFAF4;
+      --ink: #1A1712;
+      --taupe: #8B7D6B;
+      --gold: #C9A96E;
+      --gold-light: #E8D5B0;
+      --rust: #9B4E2E;
+      --sage: #6B7B6E;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--warm-white);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.4rem 3rem;
+      background: rgba(253, 250, 244, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,169,110,0.2);
+    }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 600; letter-spacing: 0.05em;
+      color: var(--ink); text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--taupe); text-decoration: none; transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+      padding: 8rem 3rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -10%; right: -5%; width: 55%; height: 120%;
+      background: radial-gradient(ellipse at 70% 40%, var(--gold-light) 0%, var(--cream) 60%, transparent 80%);
+      opacity: 0.5; pointer-events: none;
+    }
+    .hero-text { position: relative; z-index: 1; }
+    .hero-eyebrow {
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-eyebrow::before {
+      content: ''; display: block; width: 2rem; height: 1px; background: var(--gold);
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300; line-height: 1.05;
+      color: var(--ink); margin-bottom: 0.3rem;
+    }
+    h1 em { font-style: italic; color: var(--rust); }
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 300; color: var(--taupe);
+      margin-bottom: 2.5rem; line-height: 1.4;
+    }
+    .hero-bio {
+      font-size: 0.92rem; line-height: 1.8; color: var(--taupe);
+      max-width: 480px; margin-bottom: 3rem;
+    }
+    .hero-cta {
+      display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center;
+    }
+    .btn-primary {
+      padding: 0.85rem 2rem; background: var(--ink); color: var(--cream);
+      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: all 0.3s;
+      border: 1px solid var(--ink);
+    }
+    .btn-primary:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+    .btn-secondary {
+      padding: 0.85rem 2rem; border: 1px solid var(--taupe); color: var(--taupe);
+      font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase;
+      text-decoration: none; transition: all 0.3s;
+    }
+    .btn-secondary:hover { border-color: var(--ink); color: var(--ink); }
+
+    .hero-stats {
+      display: flex; flex-direction: column; gap: 2rem;
+      padding-left: 4rem; position: relative; z-index: 1;
+    }
+    .stat {
+      border-left: 2px solid var(--gold-light); padding-left: 1.5rem;
+      opacity: 0; animation: fadeUp 0.8s ease forwards;
+    }
+    .stat:nth-child(1) { animation-delay: 0.3s; }
+    .stat:nth-child(2) { animation-delay: 0.5s; }
+    .stat:nth-child(3) { animation-delay: 0.7s; }
+    .stat:nth-child(4) { animation-delay: 0.9s; }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; font-weight: 300; color: var(--rust); line-height: 1;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--taupe); margin-top: 0.3rem; }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 3rem; }
+
+    .section-label {
+      font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--gold-light); max-width: 4rem;
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 300;
+      line-height: 1.2; color: var(--ink);
+    }
+    h2 em { font-style: italic; color: var(--rust); }
+
+    /* ── EXPERTISE ── */
+    .expertise { background: var(--cream); }
+    .expertise-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2px; margin-top: 4rem;
+    }
+    .expertise-card {
+      background: var(--warm-white); padding: 2.5rem;
+      transition: all 0.4s; cursor: default; position: relative; overflow: hidden;
+    }
+    .expertise-card::before {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: var(--gold);
+      transform: scaleX(0); transition: transform 0.4s;
+    }
+    .expertise-card:hover { background: var(--ink); }
+    .expertise-card:hover::before { transform: scaleX(1); }
+    .expertise-card:hover .card-title,
+    .expertise-card:hover .card-text { color: var(--cream); }
+    .expertise-card:hover .card-icon { color: var(--gold); }
+    .card-icon { font-size: 1.5rem; margin-bottom: 1.2rem; color: var(--gold); }
+    .card-title {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.3rem;
+      font-weight: 600; color: var(--ink); margin-bottom: 0.8rem;
+      transition: color 0.4s;
+    }
+    .card-text { font-size: 0.85rem; color: var(--taupe); line-height: 1.7; transition: color 0.4s; }
+
+    /* ── EXPERIENCE ── */
+    .experience-header { max-width: 680px; margin-bottom: 4rem; }
+    .timeline { position: relative; }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 1px; background: var(--gold-light);
+    }
+    .timeline-item {
+      padding: 0 0 3.5rem 2.5rem; position: relative;
+    }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -4px; top: 6px;
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--gold); border: 2px solid var(--warm-white);
+    }
+    .timeline-period {
+      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .timeline-role {
+      font-family: 'Cormorant Garamond', serif; font-size: 1.4rem;
+      font-weight: 600; color: var(--ink); margin-bottom: 0.2rem;
+    }
+    .timeline-company {
+      font-size: 0.85rem; color: var(--taupe); margin-bottom: 1rem;
+    }
+    .timeline-highlights { list-style: none; }
+    .timeline-highlights li {
+      font-size: 0.87rem; color: var(--taupe); padding: 0.35rem 0;
+      padding-left: 1rem; position: relative; line-height: 1.6;
+    }
+    .timeline-highlights li::before {
+      content: '—'; position: absolute; left: 0; color: var(--gold);
+    }
+
+    /* ── TOOLS ── */
+    .tools { background: var(--ink); color: var(--cream); }
+    .tools .section-label { color: var(--gold); }
+    .tools h2 { color: var(--cream); }
+    .tools-grid {
+      display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 3rem;
+    }
+    .tool-tag {
+      padding: 0.5rem 1.2rem; border: 1px solid rgba(201,169,110,0.3);
+      font-size: 0.8rem; color: var(--gold-light); letter-spacing: 0.05em;
+      transition: all 0.3s;
+    }
+    .tool-tag:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+
+    /* ── EDUCATION ── */
+    .education-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .edu-card {
+      padding: 2rem; border: 1px solid var(--gold-light);
+      transition: border-color 0.3s;
+    }
+    .edu-card:hover { border-color: var(--gold); }
+    .edu-year { font-size: 0.72rem; letter-spacing: 0.15em; color: var(--gold); margin-bottom: 0.5rem; }
+    .edu-degree { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .edu-school { font-size: 0.82rem; color: var(--taupe); }
+
+    /* ── LANGUAGES ── */
+    .lang-row {
+      display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 2rem;
+    }
+    .lang-item { display: flex; flex-direction: column; gap: 0.3rem; min-width: 100px; }
+    .lang-name { font-size: 0.85rem; font-weight: 500; color: var(--ink); }
+    .lang-level { font-size: 0.75rem; color: var(--taupe); }
+    .lang-bar { height: 2px; background: var(--gold-light); margin-top: 0.4rem; position: relative; }
+    .lang-bar-fill { height: 100%; background: var(--gold); }
+
+    /* ── GITHUB ── */
+    .github { background: var(--cream); }
+    .github-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .repo-card {
+      padding: 2rem; background: var(--warm-white); border-left: 2px solid var(--gold);
+      text-decoration: none; color: inherit; display: block; transition: all 0.3s;
+    }
+    .repo-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+    .repo-icon { font-size: 1.2rem; margin-bottom: 1rem; }
+    .repo-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; }
+    .repo-desc { font-size: 0.83rem; color: var(--taupe); line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    .contact { text-align: center; padding: 6rem 3rem; }
+    .contact h2 { margin-bottom: 1.5rem; }
+    .contact-sub { font-size: 0.95rem; color: var(--taupe); margin-bottom: 3rem; }
+    .contact-links {
+      display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--gold-light); padding: 2rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem; color: var(--taupe);
+    }
+    footer a { color: var(--taupe); text-decoration: none; }
+    footer a:hover { color: var(--gold); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-text { opacity: 0; animation: fadeUp 0.9s ease 0.1s forwards; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; }
+      .hero-stats { padding-left: 0; flex-direction: row; flex-wrap: wrap; margin-top: 3rem; }
+      .stat { flex: 1; min-width: 120px; }
+      section { padding: 4rem 1.5rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">M. Dufau Casanabe Miramon</a>
+  <ul class="nav-links">
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#github">GitHub</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <p class="hero-eyebrow">L&D · Sales Excellence · Paris</p>
+    <h1>Mélanie<br><em>Dufau</em><br><em>Casanabe Miramon</em></h1>
+    <p class="hero-subtitle">Building learning ecosystems<br>that move the business.</p>
+    <p class="hero-bio">
+      Senior Learning & Development and Sales Excellence professional with over 15 years of experience designing, leading, and deploying large-scale learning programs — from Sales Academies to blended architectures — in complex international environments.
+    </p>
+    <div class="hero-cta">
+      <a href="https://www.linkedin.com/in/mdufau" class="btn-primary" target="_blank">LinkedIn →</a>
+      <a href="#github" class="btn-secondary">View GitHub</a>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <div class="stat-number">15+</div>
+      <div class="stat-label">Years in L&D & Sales Training</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">12K</div>
+      <div class="stat-label">Salespeople trained (Apple France)</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">50+</div>
+      <div class="stat-label">E-learning modules designed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">800K</div>
+      <div class="stat-label">Training budget managed (USD)</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section class="expertise" id="expertise">
+  <p class="section-label">Core expertise</p>
+  <h2>What I <em>build</em></h2>
+  <div class="expertise-grid">
+    <div class="expertise-card">
+      <div class="card-icon">🏗️</div>
+      <div class="card-title">Sales Academy Design</div>
+      <p class="card-text">Competency frameworks, certification paths, multi-year learning journeys aligned with commercial strategy and HR processes.</p>
+    </div>
+    <div class="expertise-card">
+      <div class="card-icon">📐</div>
+      <div class="card-title">L&D Strategy</div>
+      <p class="card-text">Governance, blended architecture, 70/20/10 model, LMS/LXP deployment and administration across complex organizations.</p>
+    </div>
+    <div class="expertise-card">
+      <div class="card-icon">🚀</div>
+      <div class="card-title">Large-Scale Deployment</div>
+      <p class="card-text">Training programs at scale — up to 12,000 salespeople across 4,800 retail locations, B2B and B2C, retail, telecom and telesales.</p>
+    </div>
+    <div class="expertise-card">
+      <div class="card-icon">💡</div>
+      <div class="card-title">Digital Learning</div>
+      <p class="card-text">E-learning content design and production, microlearning, mobile-first formats, and community-based peer learning platforms.</p>
+    </div>
+    <div class="expertise-card">
+      <div class="card-icon">📊</div>
+      <div class="card-title">Impact Measurement</div>
+      <p class="card-text">KPI frameworks, Kirkpatrick model, business impact tracking, executive dashboards and quarterly reporting to leadership.</p>
+    </div>
+    <div class="expertise-card">
+      <div class="card-icon">🤝</div>
+      <div class="card-title">Stakeholder Management</div>
+      <p class="card-text">Cross-functional governance with Sales Leadership, HR, Operations and Corporate EMEA/US in matrixed international environments.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="experience-header">
+    <p class="section-label">Career</p>
+    <h2>Where I've <em>worked</em></h2>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <p class="timeline-period">2021 — 2024</p>
+      <p class="timeline-role">Sales Training & Sales Academy Manager</p>
+      <p class="timeline-company">AVIV Group — Meilleurs Agents, SeLoger · Paris</p>
+      <ul class="timeline-highlights">
+        <li>Built a group-wide Sales Academy covering 600 professionals across B2B and B2C</li>
+        <li>Designed the AVIV Sales Competency Framework (Agile methodology, COMEX-validated)</li>
+        <li>Deployed 360Learning LMS in 2 months; later migrated to Cornerstone and EdCast</li>
+        <li>Produced 50+ e-learning modules in collaboration with 2 instructional designers</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-period">2018 — 2022</p>
+      <p class="timeline-role">Founder & CEO</p>
+      <p class="timeline-company">Koocheela SAS · Paris</p>
+      <ul class="timeline-highlights">
+        <li>Consulting and training in leadership, soft skills and commercial performance</li>
+        <li>Customized learning solutions for executives and management teams</li>
+        <li>Business development for Genton Productions (clients: Apple, Techsell, Herbert Smith Freehills)</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-period">2008 — 2018</p>
+      <p class="timeline-role">Sales Training Planning & Content Manager</p>
+      <p class="timeline-company">Apple France · Paris</p>
+      <ul class="timeline-highlights">
+        <li>Led sales training for Apple France — 12,000 salespeople across 4,800 retail locations</li>
+        <li>Managed $800K annual training budget in coordination with Apple Europe</li>
+        <li>Appointed Apple Watch Mentor Europe (2015) for the Apple Watch launch</li>
+        <li>Trained premium partners across Europe: Hermès, Corso Como, Dover Street Market, Colette</li>
+        <li>Exclusive authority to certify trainers for the Apple Watch program</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section class="tools">
+  <p class="section-label">Tools & platforms</p>
+  <h2>Technologies I <em>work with</em></h2>
+  <div class="tools-grid">
+    <span class="tool-tag">360Learning</span>
+    <span class="tool-tag">Cornerstone</span>
+    <span class="tool-tag">EdCast</span>
+    <span class="tool-tag">Genially</span>
+    <span class="tool-tag">Vyond</span>
+    <span class="tool-tag">LMS / LXP Admin</span>
+    <span class="tool-tag">Agile</span>
+    <span class="tool-tag">Kirkpatrick Model</span>
+    <span class="tool-tag">70/20/10</span>
+    <span class="tool-tag">Blended Learning</span>
+    <span class="tool-tag">Microlearning</span>
+    <span class="tool-tag">Markdown</span>
+    <span class="tool-tag">GitHub</span>
+    <span class="tool-tag">HTML / CSS</span>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section>
+  <p class="section-label">Education & certifications</p>
+  <h2>How I keep <em>learning</em></h2>
+  <div class="education-grid">
+    <div class="edu-card">
+      <p class="edu-year">2025</p>
+      <p class="edu-degree">Executive Master in HR</p>
+      <p class="edu-school">Sciences Po Paris</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-year">2020</p>
+      <p class="edu-degree">Professional Coach</p>
+      <p class="edu-school">Reversal Theory — Michael Apter</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-year">2015</p>
+      <p class="edu-degree">NLP Practitioner</p>
+      <p class="edu-school">Institut Français de PNL</p>
+    </div>
+    <div class="edu-card">
+      <p class="edu-year">1997</p>
+      <p class="edu-degree">Press & Public Relations</p>
+      <p class="edu-school">ISCOM</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 3rem;">
+    <p class="section-label">Languages</p>
+    <div class="lang-row">
+      <div class="lang-item">
+        <span class="lang-name">🇫🇷 French</span>
+        <span class="lang-level">Native</span>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">🇬🇧 English</span>
+        <span class="lang-level">Native</span>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">🇪🇸 Spanish</span>
+        <span class="lang-level">Fluent</span>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:80%"></div></div>
+      </div>
+      <div class="lang-item">
+        <span class="lang-name">🇦🇪 Arabic</span>
+        <span class="lang-level">Notions</span>
+        <div class="lang-bar"><div class="lang-bar-fill" style="width:20%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB -->
+<section class="github" id="github">
+  <p class="section-label">Open source</p>
+  <h2>Resources on <em>GitHub</em></h2>
+  <div class="github-grid">
+    <a href="https://github.com/mdufau/learning-design-toolkit" class="repo-card" target="_blank">
+      <div class="repo-icon">🎓</div>
+      <p class="repo-name">learning-design-toolkit</p>
+      <p class="repo-desc">Open-source templates for L&D professionals: training plan, learning objectives guide, facilitation guide, session checklist.</p>
+    </a>
+    <a href="https://github.com/mdufau/sales-academy-framework" class="repo-card" target="_blank">
+      <div class="repo-icon">🏆</div>
+      <p class="repo-name">sales-academy-framework</p>
+      <p class="repo-desc">A field-tested framework for designing and deploying a Sales Academy — competency mapping, learning architecture, onboarding, KPIs.</p>
+    </a>
+    <a href="https://github.com/mdufau" class="repo-card" target="_blank">
+      <div class="repo-icon">📁</div>
+      <p class="repo-name">More coming soon</p>
+      <p class="repo-desc">This GitHub is a work in progress. New resources on L&D strategy, digital learning, and sales enablement added regularly.</p>
+    </a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="section-label" style="justify-content:center;">Get in touch</p>
+  <h2>Let's <em>connect</em></h2>
+  <p class="contact-sub">Open to new opportunities in L&D, Sales Excellence, and learning strategy.</p>
+  <div class="contact-links">
+    <a href="/cdn-cgi/l/email-protection#c7aaa2aba6a9aea2a3a4aa87aea4aba8b2a3e9a4a8aa" class="btn-primary"><span class="__cf_email__" data-cfemail="1f727a737e71767a7b7c725f767c73706a7b317c7072">[email&#160;protected]</span></a>
+    <a href="https://www.linkedin.com/in/mdufau" class="btn-secondary" target="_blank">LinkedIn →</a>
+    <a href="https://github.com/mdufau" class="btn-secondary" target="_blank">GitHub →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2026 Mélanie Dufau C
